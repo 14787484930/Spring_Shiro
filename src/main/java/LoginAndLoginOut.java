@@ -9,7 +9,7 @@ import org.apache.shiro.subject.Subject;
 public class LoginAndLoginOut {
 
     public static void main(String[] args) {
-        
+
 
 
         Subject subject = ShiroUtils.getSubject();

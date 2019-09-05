@@ -18,7 +18,12 @@ public class LoginAndLoginOut {
         UsernamePasswordToken token = new UsernamePasswordToken("zxl","456");
 
         //进行登录
-        subject.login(token);
+        try {
+            subject.login(token);
+            System.out.println("认证成功！");
+        }catch (Exception e){
+            System.out.println("认证失败！");
+        }
 
         System.out.println(subject.isAuthenticated());
 

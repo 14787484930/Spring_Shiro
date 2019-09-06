@@ -15,7 +15,7 @@ public class LoginAndLoginOut {
         Subject subject = ShiroUtils.getSubject();
 
         //创建登录令牌
-        UsernamePasswordToken token = new UsernamePasswordToken("zxl","123456");
+        UsernamePasswordToken token = new UsernamePasswordToken("zxl","456");
 
         //进行登录
         try {
@@ -25,12 +25,14 @@ public class LoginAndLoginOut {
             System.out.println("认证失败！");
         }
 
-        System.out.println(subject.isAuthenticated());
+        System.out.println(subject.isAuthenticated()); //判断是否认证过
+        System.out.println(subject.hasRole("role2")); //判断是否
+        System.out.println(subject.isPermitted("user:create"));
 
         //退出登录
         subject.logout();
 
-        System.out.println(subject.isAuthenticated());
+        //System.out.println(subject.isAuthenticated());
 
     }
 

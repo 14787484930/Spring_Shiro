@@ -9,6 +9,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author zxl
  * @date 2019/9/6 11:54
@@ -19,6 +22,22 @@ public class Md5Realm extends AuthorizingRealm {
     //授权方法
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        //获取用户名
+        String userName = (String)principals.getPrimaryPrincipal();
+        System.out.println("realm中获取的用户名："+userName);
+
+        //通过用户名获取权限
+        String[] roles = {"role1","role2"};
+
+        //权限列表
+        List<String> perms = new ArrayList<String>();
+
+        for(String perm : roles){
+            perms.add("user:create");
+            perms.add("user:update");
+        }
+
+
         return null;
     }
 

@@ -15,7 +15,7 @@ public class LoginAndLoginOut {
         Subject subject = ShiroUtils.getSubject();
 
         //创建登录令牌
-        UsernamePasswordToken token = new UsernamePasswordToken("zxl","456");
+        UsernamePasswordToken token = new UsernamePasswordToken("zxl","123456");
 
         //进行登录
         try {
@@ -33,4 +33,15 @@ public class LoginAndLoginOut {
         System.out.println(subject.isAuthenticated());
 
     }
+
+    /*public static void main(String[] args) {
+
+        String password = "123456";
+        String salt = "abc";
+
+        Md5Hash md5Hash = new Md5Hash(password,salt,1);
+        System.out.println(md5Hash.toString());
+
+
+    }*/
 }

@@ -13,7 +13,7 @@ public class ShiroUtils {
 
     public static Subject getSubject(){
         //获取securitymanager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro02/shiro.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro04/shiro.ini");
         SecurityManager securityManager = factory.getInstance();
 
         //将SecuritityManger绑定给SecuritityUtils

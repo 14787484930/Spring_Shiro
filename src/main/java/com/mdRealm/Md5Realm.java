@@ -5,6 +5,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
@@ -26,19 +27,23 @@ public class Md5Realm extends AuthorizingRealm {
         String userName = (String)principals.getPrimaryPrincipal();
         System.out.println("realm中获取的用户名："+userName);
 
-        //通过用户名获取权限
+        //通过用户名获取角色信息
         String[] roles = {"role1","role2"};
 
         //权限列表
         List<String> perms = new ArrayList<String>();
 
         for(String perm : roles){
+            //根据角色从数据库中获取权限信息
             perms.add("user:create");
             perms.add("user:update");
         }
 
+        //将查询的权限信息封装于AuthorizationInfo中，并返回
+        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        authorizationInfo.addStringPermissions(perms);
 
-        return null;
+        return authorizationInfo;
     }
 
     //认证方法
